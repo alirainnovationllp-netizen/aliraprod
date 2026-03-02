@@ -49,7 +49,8 @@ export function ContactSection() {
     onSuccess: () => {
       toast({
         title: "Message Sent",
-        description: "Thank you for reaching out. We'll get back to you within 24 hours.",
+        description:
+          "Thank you for reaching out. We'll get back to you within 24 hours.",
       });
       form.reset();
     },
@@ -67,7 +68,11 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 lg:py-32 bg-card" data-testid="section-contact">
+    <section
+      id="contact"
+      className="py-24 lg:py-32 bg-card"
+      data-testid="section-contact"
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <motion.div
@@ -93,8 +98,12 @@ export function ContactSection() {
                   <Mail className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <div className="font-medium text-foreground text-sm">Email Us</div>
-                  <div className="text-muted-foreground text-sm">hello@aliralabs.com</div>
+                  <div className="font-medium text-foreground text-sm">
+                    Email Us
+                  </div>
+                  <div className="text-muted-foreground text-sm">
+                    alirainnovationllp@gmail.com
+                  </div>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -102,8 +111,12 @@ export function ContactSection() {
                   <Phone className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <div className="font-medium text-foreground text-sm">Call Us</div>
-                  <div className="text-muted-foreground text-sm">+1 (555) 234-5678</div>
+                  <div className="font-medium text-foreground text-sm">
+                    Call Us
+                  </div>
+                  <div className="text-muted-foreground text-sm">
+                    +91 (974) 073-9533
+                  </div>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -111,8 +124,12 @@ export function ContactSection() {
                   <MapPin className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <div className="font-medium text-foreground text-sm">Visit Us</div>
-                  <div className="text-muted-foreground text-sm">San Francisco, CA</div>
+                  <div className="font-medium text-foreground text-sm">
+                    Visit Us
+                  </div>
+                  <div className="text-muted-foreground text-sm">
+                    Bangalore, India
+                  </div>
                 </div>
               </div>
             </div>
@@ -127,7 +144,10 @@ export function ContactSection() {
             <Card>
               <CardContent className="p-8">
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+                  <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="space-y-5"
+                  >
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <FormField
                         control={form.control}
@@ -136,7 +156,11 @@ export function ContactSection() {
                           <FormItem>
                             <FormLabel>Full Name</FormLabel>
                             <FormControl>
-                              <Input placeholder="Jane Smith" data-testid="input-name" {...field} />
+                              <Input
+                                placeholder="Jane Smith"
+                                data-testid="input-name"
+                                {...field}
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -149,7 +173,12 @@ export function ContactSection() {
                           <FormItem>
                             <FormLabel>Email</FormLabel>
                             <FormControl>
-                              <Input type="email" placeholder="jane@company.com" data-testid="input-email" {...field} />
+                              <Input
+                                type="email"
+                                placeholder="jane@company.com"
+                                data-testid="input-email"
+                                {...field}
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -164,7 +193,12 @@ export function ContactSection() {
                         <FormItem>
                           <FormLabel>Company (Optional)</FormLabel>
                           <FormControl>
-                            <Input placeholder="Your Company" data-testid="input-company" {...field} value={field.value ?? ""} />
+                            <Input
+                              placeholder="Your Company"
+                              data-testid="input-company"
+                              {...field}
+                              value={field.value ?? ""}
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -177,17 +211,28 @@ export function ContactSection() {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Service Interest</FormLabel>
-                          <Select onValueChange={field.onChange} value={field.value ?? ""}>
+                          <Select
+                            onValueChange={field.onChange}
+                            value={field.value ?? ""}
+                          >
                             <FormControl>
                               <SelectTrigger data-testid="select-service">
                                 <SelectValue placeholder="Select a service" />
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              <SelectItem value="agile-training">Agile Training</SelectItem>
-                              <SelectItem value="leadership">Leadership Development</SelectItem>
-                              <SelectItem value="digital-transformation">Digital Transformation</SelectItem>
-                              <SelectItem value="learning-products">Learning Products</SelectItem>
+                              <SelectItem value="agile-training">
+                                Agile Training
+                              </SelectItem>
+                              <SelectItem value="leadership">
+                                Leadership Development
+                              </SelectItem>
+                              <SelectItem value="digital-transformation">
+                                Digital Transformation
+                              </SelectItem>
+                              <SelectItem value="learning-products">
+                                Learning Products
+                              </SelectItem>
                               <SelectItem value="other">Other</SelectItem>
                             </SelectContent>
                           </Select>

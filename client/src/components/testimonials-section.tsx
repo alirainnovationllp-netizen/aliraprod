@@ -1,5 +1,4 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
@@ -42,7 +41,11 @@ export function TestimonialsSection() {
   });
 
   return (
-    <section id="testimonials" className="py-24 lg:py-32 bg-background" data-testid="section-testimonials">
+    <section
+      id="testimonials"
+      className="py-24 lg:py-32 bg-background"
+      data-testid="section-testimonials"
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -52,7 +55,7 @@ export function TestimonialsSection() {
           className="text-center max-w-2xl mx-auto mb-16"
         >
           <span className="text-sm font-medium tracking-widest uppercase text-muted-foreground">
-            Client Stories
+            Case Studies
           </span>
           <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-bold text-foreground tracking-tight">
             Trusted by Industry Leaders
@@ -79,27 +82,22 @@ export function TestimonialsSection() {
           >
             {testimonials?.map((t) => (
               <motion.div key={t.id} variants={cardVariants}>
-                <Card className="h-full" data-testid={`card-testimonial-${t.id}`}>
+                <Card
+                  className="h-full"
+                  data-testid={`card-testimonial-${t.id}`}
+                >
                   <CardContent className="p-8 flex flex-col h-full">
+                    <div>
+                      <div>
+                        <div className="mt-4 text-muted-foreground text-lg leading-relaxed">
+                          "{t.company}"
+                        </div>
+                      </div>
+                    </div>
                     <Quote className="w-8 h-8 text-primary/20 mb-4 flex-shrink-0" />
                     <p className="text-foreground leading-relaxed flex-1">
                       "{t.quote}"
                     </p>
-                    <div className="flex items-center gap-3 mt-6 pt-6 border-t">
-                      <Avatar>
-                        <AvatarFallback className="bg-primary/10 text-primary text-sm font-semibold">
-                          {t.avatarInitials}
-                        </AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <div className="font-semibold text-sm text-foreground" data-testid={`text-testimonial-name-${t.id}`}>
-                          {t.name}
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          {t.role}, {t.company}
-                        </div>
-                      </div>
-                    </div>
                   </CardContent>
                 </Card>
               </motion.div>

@@ -25,7 +25,10 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="inline-block mb-6 px-4 py-1.5 text-xs font-medium tracking-widest uppercase text-white/70 border border-white/20 rounded-full backdrop-blur-sm" data-testid="text-hero-tagline">
+          <span
+            className="inline-block mb-6 px-4 py-1.5 text-xs font-medium tracking-widest uppercase text-white/70 border border-white/20 rounded-full backdrop-blur-sm"
+            data-testid="text-hero-tagline"
+          >
             Agile &middot; Leadership &middot; Transformation
           </span>
         </motion.div>
@@ -49,9 +52,7 @@ export function HeroSection() {
           className="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-white/75 leading-relaxed"
           data-testid="text-hero-description"
         >
-          We partner with organizations to build agile, resilient teams through
-          expert training, hands-on coaching, and proven digital transformation
-          strategies.
+          Engineering the future of work by amplifying human capability with AI.
         </motion.p>
 
         <motion.div

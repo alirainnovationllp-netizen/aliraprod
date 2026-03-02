@@ -3,15 +3,22 @@ import { Target, Award, TrendingUp, Globe } from "lucide-react";
 
 const stats = [
   { icon: Target, value: "200+", label: "Teams Transformed" },
-  { icon: Award, value: "15+", label: "Years Experience" },
+  { icon: Award, value: "5+", label: "Years Experience" },
   { icon: TrendingUp, value: "95%", label: "Client Satisfaction" },
-  { icon: Globe, value: "30+", label: "Countries Served" },
+  { icon: TrendingUp, value: "10x", label: "Productivity Boost" },
 ];
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-24 lg:py-32 relative overflow-hidden" data-testid="section-about">
-      <div className="absolute inset-0 bg-cover bg-center opacity-[0.04] dark:opacity-[0.06]" style={{ backgroundImage: "url(/images/about-bg.png)" }} />
+    <section
+      id="about"
+      className="py-24 lg:py-32 relative overflow-hidden"
+      data-testid="section-about"
+    >
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-[0.04] dark:opacity-[0.06]"
+        style={{ backgroundImage: "url(/images/about-bg.png)" }}
+      />
       <div className="absolute inset-0 bg-gradient-to-br from-card/90 via-card/95 to-card/90" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
@@ -28,30 +35,42 @@ export function AboutSection() {
             <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-bold text-foreground tracking-tight">
               Your Partner in Organizational Excellence
             </h2>
-            <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
-              At AliraLabs, we believe that true transformation begins with people.
-              Our team of seasoned practitioners brings decades of real-world
-              experience across industries, combining deep expertise in agile
-              methodologies with a passion for developing high-performing teams.
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              Sustainable advantage in the AI era will not come from tools
+              alone. It will come from organizations that redesign how humans
+              and intelligent systems work together at scale, every day, across
+              the enterprise.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              We don't just teach frameworks -- we embed ourselves in your
-              organization, understand your unique challenges, and co-create
-              solutions that stick. Our approach is practical, measurable, and
-              designed to deliver lasting impact.
+              Alira Labs helps organizations transition from experimenting with
+              artificial intelligence to operating as truly AI native
+              enterprises. We combine strategic insight, operating model design,
+              and hands-on execution to embed intelligence directly into how
+              work gets done across teams, products, and decision systems. Our
+              focus is not technology adoption alone. We redesign how
+              organizations plan, build, deliver, and improve in environments
+              where human capability is augmented by intelligent systems.
             </p>
 
             <div className="mt-10 grid grid-cols-2 gap-6">
               {stats.map((stat) => {
                 const Icon = stat.icon;
                 return (
-                  <div key={stat.label} className="flex items-start gap-3" data-testid={`stat-${stat.label.toLowerCase().replace(/\s+/g, "-")}`}>
+                  <div
+                    key={stat.label}
+                    className="flex items-start gap-3"
+                    data-testid={`stat-${stat.label.toLowerCase().replace(/\s+/g, "-")}`}
+                  >
                     <div className="w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <Icon className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-foreground">{stat.value}</div>
-                      <div className="text-sm text-muted-foreground">{stat.label}</div>
+                      <div className="text-2xl font-bold text-foreground">
+                        {stat.value}
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        {stat.label}
+                      </div>
                     </div>
                   </div>
                 );
