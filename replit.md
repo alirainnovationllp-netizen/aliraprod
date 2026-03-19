@@ -6,7 +6,7 @@ Professional single-page website for AliraLabs, a consulting company specializin
 ## Tech Stack
 - **Frontend**: React + TypeScript with Vite, TailwindCSS, shadcn/ui components, Framer Motion for animations
 - **Backend**: Express.js with TypeScript
-- **Database**: PostgreSQL with Drizzle ORM
+- **Database**: MySQL with Drizzle ORM (connection via MYSQL_URL env var)
 - **Routing**: wouter (client-side)
 
 ## Project Architecture

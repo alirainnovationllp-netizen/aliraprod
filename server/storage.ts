@@ -18,8 +18,12 @@ export interface IStorage {
 
 export class DatabaseStorage implements IStorage {
   async createContact(contact: InsertContact): Promise<Contact> {
-    const [result] = await db.insert(contactInquiries).values(contact).returning();
-    return result;
+    const [result] = await db.insert(contactInquiries).values(contact);
+    const [inserted] = await db
+      .select()
+      .from(contactInquiries)
+      .where(eq(contactInquiries.id, result.insertId));
+    return inserted;
   }
 
   async getTestimonials(): Promise<Testimonial[]> {
@@ -27,8 +31,12 @@ export class DatabaseStorage implements IStorage {
   }
 
   async createTestimonial(testimonial: InsertTestimonial): Promise<Testimonial> {
-    const [result] = await db.insert(testimonials).values(testimonial).returning();
-    return result;
+    const [result] = await db.insert(testimonials).values(testimonial);
+    const [inserted] = await db
+      .select()
+      .from(testimonials)
+      .where(eq(testimonials.id, result.insertId));
+    return inserted;
   }
 
   async getTestimonialCount(): Promise<number> {
