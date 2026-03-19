@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "j-y6NFH61wtd0rsIqUtiQ"
+uri = "file://aliralabs-hostinger.tar.gz"
+type = "unspecified"
+title = "AliraLabs - Hostinger Deployment Package"
