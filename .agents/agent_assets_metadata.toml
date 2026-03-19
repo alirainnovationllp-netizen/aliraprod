@@ -6,3 +6,9 @@ id = "j-y6NFH61wtd0rsIqUtiQ"
 uri = "file://aliralabs-hostinger.tar.gz"
 type = "unspecified"
 title = "AliraLabs - Hostinger Deployment Package"
+
+[[outputs]]
+id = "BFH3c__fXn9oY9dWGROAd"
+uri = "file://dist.zip"
+type = "unspecified"
+title = "dist.zip — AliraLabs Build"
