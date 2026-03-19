@@ -33,7 +33,7 @@ export function Navbar() {
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
   };
@@ -51,28 +51,31 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           <a
             href="#"
-            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
             className="flex items-center gap-2 group"
             data-testid="link-logo"
           >
             <div className="w-16 h-16 text-primary transition-transform group-hover:scale-105">
-              <svg 
-                version="1.1" 
-                id="Layer_1" 
-                xmlns="http://www.w3.org/2000/svg" 
-                xmlnsXlink="http://www.w3.org/1999/xlink" 
-                x="0px" 
+              <svg
+                version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+                x="0px"
                 y="0px"
-                width="100%" 
-                viewBox="0 0 1024 672" 
-                enableBackground="new 0 0 1024 672" 
+                width="100%"
+                viewBox="180 230 210 200"
+                enableBackground="new 0 0 1024 672"
                 xmlSpace="preserve"
-                className="w-full h-full"
+                className="w-auto h-full"
               >
-                <path 
-                  fill="currentColor" 
-                  opacity="1.000000" 
-                  stroke="none" 
+                <path
+                  fill="currentColor"
+                  opacity="1.000000"
+                  stroke="none"
                   d="
 M314.434692,364.435669 
         C303.734406,374.721436 293.297699,384.772522 282.835052,394.796478 
@@ -112,9 +115,11 @@ z"
                 />
               </svg>
             </div>
-            <span className={`font-serif text-xl font-bold tracking-tight transition-colors duration-300 ${
-              scrolled ? "text-foreground" : "text-white"
-            }`}>
+            <span
+              className={`font-serif text-xl font-bold tracking-tight transition-colors duration-300 ${
+                scrolled ? "text-foreground" : "text-white"
+              }`}
+            >
               AliraLabs
             </span>
           </a>
