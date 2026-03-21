@@ -1,9 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
-import { Skeleton } from "@/components/ui/skeleton";
-import type { Testimonial } from "@shared/schema";
+import testimonials from "@/data/testimonials.json";
 
 const containerVariants = {
   hidden: {},
@@ -15,31 +13,7 @@ const cardVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
-function TestimonialSkeleton() {
-  return (
-    <Card className="h-full">
-      <CardContent className="p-8">
-        <Skeleton className="w-8 h-8 rounded-full mb-4" />
-        <Skeleton className="h-4 w-full mb-2" />
-        <Skeleton className="h-4 w-full mb-2" />
-        <Skeleton className="h-4 w-3/4 mb-6" />
-        <div className="flex items-center gap-3 mt-6">
-          <Skeleton className="w-10 h-10 rounded-full" />
-          <div>
-            <Skeleton className="h-4 w-24 mb-1" />
-            <Skeleton className="h-3 w-32" />
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
 export function TestimonialsSection() {
-  const { data: testimonials, isLoading } = useQuery<Testimonial[]>({
-    queryKey: ["/api/testimonials"],
-  });
-
   return (
     <section
       id="testimonials"
@@ -66,44 +40,36 @@ export function TestimonialsSection() {
           </p>
         </motion.div>
 
-        {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
-              <TestimonialSkeleton key={i} />
-            ))}
-          </div>
-        ) : (
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
-          >
-            {testimonials?.map((t) => (
-              <motion.div key={t.id} variants={cardVariants}>
-                <Card
-                  className="h-full"
-                  data-testid={`card-testimonial-${t.id}`}
-                >
-                  <CardContent className="p-8 flex flex-col h-full">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
+          {testimonials.map((t) => (
+            <motion.div key={t.id} variants={cardVariants}>
+              <Card
+                className="h-full"
+                data-testid={`card-testimonial-${t.id}`}
+              >
+                <CardContent className="p-8 flex flex-col h-full">
+                  <div>
                     <div>
-                      <div>
-                        <div className="mt-4 text-muted-foreground text-lg leading-relaxed">
-                          "{t.company}"
-                        </div>
+                      <div className="mt-4 text-muted-foreground text-lg leading-relaxed">
+                        "{t.company}"
                       </div>
                     </div>
-                    <Quote className="w-8 h-8 text-primary/20 mb-4 flex-shrink-0" />
-                    <p className="text-foreground leading-relaxed flex-1">
-                      "{t.quote}"
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
+                  </div>
+                  <Quote className="w-8 h-8 text-primary/20 mb-4 flex-shrink-0" />
+                  <p className="text-foreground leading-relaxed flex-1">
+                    "{t.quote}"
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

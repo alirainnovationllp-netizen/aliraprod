@@ -1,72 +1,10 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { insertContactSchema, type InsertContact } from "@shared/schema";
-import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 import { Send, Mail, MapPin, Phone } from "lucide-react";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+
+const EMAIL = "alirainnovationllp@gmail.com";
 
 export function ContactSection() {
-  const { toast } = useToast();
-
-  const form = useForm<InsertContact>({
-    resolver: zodResolver(insertContactSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      company: "",
-      service: "",
-      message: "",
-    },
-  });
-
-  const mutation = useMutation({
-    mutationFn: async (data: InsertContact) => {
-      const res = await apiRequest("POST", "/api/contact", data);
-      return res.json();
-    },
-    onSuccess: () => {
-      toast({
-        title: "Message Sent",
-        description:
-          "Thank you for reaching out. We'll get back to you within 24 hours.",
-      });
-      form.reset();
-    },
-    onError: () => {
-      toast({
-        title: "Something went wrong",
-        description: "Please try again or email us directly.",
-        variant: "destructive",
-      });
-    },
-  });
-
-  const onSubmit = (data: InsertContact) => {
-    mutation.mutate(data);
-  };
-
   return (
     <section
       id="contact"
@@ -101,9 +39,12 @@ export function ContactSection() {
                   <div className="font-medium text-foreground text-sm">
                     Email Us
                   </div>
-                  <div className="text-muted-foreground text-sm">
-                    alirainnovationllp@gmail.com
-                  </div>
+                  <a
+                    href={`mailto:${EMAIL}`}
+                    className="text-muted-foreground text-sm hover:text-primary transition-colors"
+                  >
+                    {EMAIL}
+                  </a>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -140,146 +81,25 @@ export function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
+            className="flex flex-col items-center justify-center text-center"
           >
-            <Card>
-              <CardContent className="p-8">
-                <Form {...form}>
-                  <form
-                    onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-5"
-                  >
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Full Name</FormLabel>
-                            <FormControl>
-                              <Input
-                                placeholder="Jane Smith"
-                                data-testid="input-name"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Email</FormLabel>
-                            <FormControl>
-                              <Input
-                                type="email"
-                                placeholder="jane@company.com"
-                                data-testid="input-email"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-
-                    <FormField
-                      control={form.control}
-                      name="company"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Company (Optional)</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Your Company"
-                              data-testid="input-company"
-                              {...field}
-                              value={field.value ?? ""}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="service"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Service Interest</FormLabel>
-                          <Select
-                            onValueChange={field.onChange}
-                            value={field.value ?? ""}
-                          >
-                            <FormControl>
-                              <SelectTrigger data-testid="select-service">
-                                <SelectValue placeholder="Select a service" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              <SelectItem value="agile-training">
-                                Agile Training
-                              </SelectItem>
-                              <SelectItem value="leadership">
-                                Leadership Development
-                              </SelectItem>
-                              <SelectItem value="digital-transformation">
-                                Digital Transformation
-                              </SelectItem>
-                              <SelectItem value="learning-products">
-                                Learning Products
-                              </SelectItem>
-                              <SelectItem value="other">Other</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="message"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Message</FormLabel>
-                          <FormControl>
-                            <Textarea
-                              placeholder="Tell us about your goals and how we can help..."
-                              className="resize-none min-h-[120px]"
-                              data-testid="input-message"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <Button
-                      type="submit"
-                      size="lg"
-                      className="w-full"
-                      disabled={mutation.isPending}
-                      data-testid="button-submit-contact"
-                    >
-                      {mutation.isPending ? (
-                        "Sending..."
-                      ) : (
-                        <>
-                          Send Message
-                          <Send className="ml-1 w-4 h-4" />
-                        </>
-                      )}
-                    </Button>
-                  </form>
-                </Form>
-              </CardContent>
-            </Card>
+            <Mail className="w-16 h-16 text-primary/30 mb-6" />
+            <h3 className="font-serif text-2xl font-bold text-foreground mb-3">
+              Let's Start a Conversation
+            </h3>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-md">
+              Drop us an email with your goals and challenges, and we'll get back to you within 24 hours.
+            </p>
+            <Button
+              size="lg"
+              asChild
+              data-testid="button-submit-contact"
+            >
+              <a href={`mailto:${EMAIL}?subject=Inquiry from AliraLabs Website`}>
+                Send Us an Email
+                <Send className="ml-1 w-4 h-4" />
+              </a>
+            </Button>
           </motion.div>
         </div>
       </div>

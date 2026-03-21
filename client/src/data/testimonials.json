@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Sarah Chen",
+    "role": "VP of Engineering",
+    "company": "Enterprise Intelligence Layer via MCP Server Architecture",
+    "quote": "A global enterprise software company struggling to scale AI beyond isolated pilots engaged Alira Labs to embed intelligence directly into its delivery system. We implemented an AI native Agile operating model across 40+ teams introducing AI orchestrated planning, predictive prioritization, data-driven flow optimization, and structured human AI collaboration. The result: 32% faster sprint cycles, 40% greater planning accuracy, 2.3\u00d7 delivery throughput, and a shift from AI experimentation to fully AI driven operations.",
+    "avatarInitials": "SC"
+  },
+  {
+    "id": 2,
+    "name": "Marcus Rivera",
+    "role": "Director of Operations",
+    "company": "Preparing the Workforce for AI-Augmented Operations",
+    "quote": "A large multi product enterprise with fragmented AI initiatives partnered with Alira Labs to unify disconnected copilots, models, and data into a single intelligence layer. We designed and deployed an enterprise grade MCP server architecture that securely connected systems, standardized AI interaction across products, and established governance for scalable execution. The result: a 50% reduction in duplicated integrations, faster AI deployment across the portfolio, and a shift from siloed experimentation to a unified enterprise intelligence infrastructure.",
+    "avatarInitials": "MR"
+  },
+  {
+    "id": 3,
+    "name": "Anika Patel",
+    "role": "Chief Digital Officer",
+    "company": "Building an AI-Native Delivery Organization",
+    "quote": "A mid market SaaS provider facing competitive pressure from AI enabled entrants engaged Alira Labs to transform its static product without a full rebuild. We embedded an MCP connected intelligence layer, conversational interfaces, and real time learning capabilities to create a continuously improving product experience. The result: 45% higher user engagement, a 28% reduction in support workload, a new premium pricing tier within six months, and repositioning from software vendor to intelligent product provider.",
+    "avatarInitials": "AP"
+  }
+]
